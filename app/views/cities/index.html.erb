@@ -1,0 +1,27 @@
+<div>
+  <h1>Select a City</h1>
+  <%= form_with url: forecast_cities_path, method: :post do %>
+    <%= select_tag :city_id, options_from_collection_for_select(@cities, :id, :name) %>
+    <%= submit_tag "Get Forecast" %>
+  <% end %>
+
+  <% if @forecast %>
+    <h2>7 Day Forecast</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Temperature (°C)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @forecast[:date].zip(@forecast[:temperature]).each do |date, temperature| %>
+          <tr>
+            <td><%= date %></td>
+            <td><%= temperature %>°C</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
