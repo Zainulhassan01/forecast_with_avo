@@ -9,8 +9,8 @@ class GeocodeApiClient
   def initialize(city:, state:)
     @city = city
     @state = state
-    @base_url = Rails.application.config.geocode_api.base_url
-    @api_key = Rails.application.config.geocode_api.api_key
+    @base_url = ENV['GEOCODE_API_BASE_URL']
+    @api_key = ENV['GEOCODE_API_KEY']
   end
 
   def fetch_city_coordinates

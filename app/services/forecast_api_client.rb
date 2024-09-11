@@ -9,7 +9,7 @@ class ForecastApiClient
   def initialize(latitude:, longitude:)
     @latitude = latitude
     @longitude = longitude
-    @base_url = Rails.application.config.forecast_api.base_url
+    @base_url = ENV['FORECAST_API_BASE_URL']
   end
 
   def fetch_forecast
