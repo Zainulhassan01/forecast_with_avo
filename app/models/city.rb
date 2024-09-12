@@ -2,7 +2,8 @@
 
 # City Model with attributes to save data in DB
 class City < ApplicationRecord
-  before_validation :fetch_coordinates, on: :create
+  validates :name, :state, presence: true
+  after_validation :fetch_coordinates, if: :should_fetch_coordinates?, on: :create
 
   private
 
@@ -16,5 +17,9 @@ class City < ApplicationRecord
     else
       errors.add(:base, 'Could not fetch coordinates for the city.')
     end
+  end
+
+  def should_fetch_coordinates?
+    name.present? && state.present?
   end
 end

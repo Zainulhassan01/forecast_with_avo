@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Showing the cities scrollbar and getting the forecast
+# Showing the cities dropdown and getting the forecast
 class CitiesController < ApplicationController
   before_action :fetch_cities
 

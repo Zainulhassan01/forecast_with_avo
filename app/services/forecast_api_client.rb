@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TODO: We can add a base class to DRY out the code for both services
 require 'net/http'
 require 'uri'
 require 'json'

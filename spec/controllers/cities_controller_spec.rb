@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TODO: We can improve test cases by checking for specific response
 require 'rails_helper'
 RSpec.describe CitiesController, type: :controller do
   render_views
