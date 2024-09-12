@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   mount Avo::Engine, at: Avo.configuration.root_path
+
   root 'cities#index'
   resources :cities, only: [:index] do
     post :forecast, on: :collection

@@ -1,13 +1,18 @@
-<div>
+<div class="container">
+  <div class="button-container">
+    <%= link_to "Avo Dashboard", avo_path, class: "view-cities-btn" %>
+  </div>
   <h1>Select a City</h1>
-  <%= form_with url: forecast_cities_path, method: :post do %>
-    <%= select_tag :city_id, options_from_collection_for_select(@cities, :id, :name) %>
-    <%= submit_tag "Get Forecast" %>
+  <%= form_with url: forecast_cities_path, method: :post, class: "city-form", local: true do %>
+    <div class="form-group">
+      <%= select_tag 'city[city_id]', options_from_collection_for_select(@cities, :id, :name), class: "city-select" %>
+      <%= submit_tag "Get Forecast", class: "submit-btn" %>
+    </div>
   <% end %>
 
   <% if @forecast %>
     <h2>7 Day Forecast</h2>
-    <table>
+    <table class="forecast-table">
       <thead>
         <tr>
           <th>Date</th>
@@ -15,12 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @forecast[:date].zip(@forecast[:temperature]).each do |date, temperature| %>
-          <tr>
-            <td><%= date %></td>
-            <td><%= temperature %>°C</td>
-          </tr>
-        <% end %>
+        <%= forecast_table_rows(@forecast) %>
       </tbody>
     </table>
   <% end %>
